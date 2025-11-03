@@ -283,9 +283,10 @@ If Calico pods are not healthy:
 
 ### ✨ Author
 
-**Your Name** — DevOps & Kubernetes Enthusiast
-📘 Blog: *[Link to your write-up once published]*
-🐙 GitHub: *[your-username]*
+**Aditya Kapse** — DevOps & Kubernetes Enthusiast
+📘 Linkdin: www.linkedin.com/in/aditya-kapse-ba8aaa209 
+🐙 GitHub: aditya6543
+
 
 ---
 
