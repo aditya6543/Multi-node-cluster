@@ -25,14 +25,18 @@ It also installs essential CLI tools like:
 
 ## ⚙️ Infrastructure Setup with Terraform
 
-SG Target,Type,Protocol,Port Range,Source,Description
-master-sg,SSH,TCP,22,Your IP,Admin access
-master-sg,K8s API,TCP,6443,"master-sg, worker-sg, Your IP",K8s API Server
-master-sg,etcd,TCP,2379-2380,master-sg,etcd server
-master-sg,Calico BGP,TCP,179,"master-sg, worker-sg",Calico networking
-worker-sg,SSH,TCP,22,Your IP,Admin access
-worker-sg,NodePort,TCP,30000-32767,0.0.0.0/0 (or restricted),K8s NodePort services
-worker-sg,Calico BGP,TCP,179,"master-sg, worker-sg",Calico networking
+### 🛡️ Security Group Configuration
+
+| **SG Name**  | **Type**      | **Protocol** | **Port Range**    | **Source**                              | **Description**          |
+|---------------|---------------|---------------|-------------------|------------------------------------------|---------------------------|
+| master-sg     | SSH           | TCP           | 22                | Your IP                                 | Admin access              |
+| master-sg     | K8s API       | TCP           | 6443              | master-sg, worker-sg, Your IP           | Kubernetes API Server     |
+| master-sg     | etcd          | TCP           | 2379-2380         | master-sg                               | etcd server               |
+| master-sg     | Calico BGP    | TCP           | 179               | master-sg, worker-sg                    | Calico networking         |
+| worker-sg     | SSH           | TCP           | 22                | Your IP                                 | Admin access              |
+| worker-sg     | NodePort      | TCP           | 30000-32767       | 0.0.0.0/0 (or restricted)               | Kubernetes NodePort range |
+| worker-sg     | Calico BGP    | TCP           | 179               | master-sg, worker-sg                    | Calico networking         |
+
 Using the provided `main.tf`, Terraform will:
 
 * Provision **3 VMs**:
